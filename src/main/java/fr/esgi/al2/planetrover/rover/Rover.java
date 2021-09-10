@@ -1,10 +1,12 @@
 package fr.esgi.al2.planetrover.rover;
 
+import fr.esgi.al2.planetrover.Name;
+
 import java.util.Objects;
 
 public class Rover {
 
-    private Name name;
+    private final Name name;
     private Position position;
     private Orientation orientation;
 
@@ -21,7 +23,7 @@ public class Rover {
     }
 
     public void move (){
-        switch (orientation) {
+        switch (this.orientation) {
             case North -> this.position = this.position.goNorth();
             case South -> this.position = this.position.goSouth();
             case East -> this.position = this.position.goEast();
@@ -31,10 +33,6 @@ public class Rover {
 
     public Name getName() {
         return name;
-    }
-
-    public void setName(Name name) {
-        this.name = name;
     }
 
     public Position getPosition() {
@@ -58,7 +56,7 @@ public class Rover {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Rover rover = (Rover) o;
-        return Objects.equals(name, rover.name) && Objects.equals(position, rover.position) && orientation == rover.orientation;
+        return Objects.equals(name, rover.name);
     }
 
     @Override

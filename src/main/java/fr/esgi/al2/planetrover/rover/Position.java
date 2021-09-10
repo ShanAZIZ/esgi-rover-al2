@@ -3,8 +3,8 @@ package fr.esgi.al2.planetrover.rover;
 import java.util.Objects;
 
 public class Position {
-    int x;
-    int y;
+    final int x;
+    final int y;
 
     public Position(int x, int y) {
         this.x = x;
@@ -12,16 +12,16 @@ public class Position {
     }
 
     public Position goNorth(){
-        return new Position(this.x, this.y++);
+        return new Position(this.x, this.y+1);
     }
     public Position goSouth(){
-        return new Position(this.x, this.y--);
+        return new Position(this.x, this.y-1);
     }
     public Position goEast(){
-        return new Position(this.x++, this.y);
+        return new Position(this.x+1, this.y);
     }
     public Position goWest(){
-        return new Position(this.x--, this.y++);
+        return new Position(this.x-1, this.y);
     }
 
     @Override
