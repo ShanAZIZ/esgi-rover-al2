@@ -31,6 +31,14 @@ public class Rover {
         }
     }
 
+    public void rotateLeft(){
+        this.orientation = this.orientation.left();
+    }
+
+    public void rotateRight(){
+        this.orientation = this.orientation.right();
+    }
+
     public Name getName() {
         return name;
     }
