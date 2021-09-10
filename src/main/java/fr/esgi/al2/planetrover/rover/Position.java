@@ -1,5 +1,7 @@
 package fr.esgi.al2.planetrover.rover;
 
+import java.util.Objects;
+
 public class Position {
     int x;
     int y;
@@ -9,33 +11,29 @@ public class Position {
         this.y = y;
     }
 
-    public void goNorth(){
-        this.y++;
+    public Position goNorth(){
+        return new Position(this.x, this.y++);
     }
-    public void goSouth(){
-        this.y--;
+    public Position goSouth(){
+        return new Position(this.x, this.y--);
     }
-    public void goEast(){
-        this.x++;
+    public Position goEast(){
+        return new Position(this.x++, this.y);
     }
-    public void goWest(){
-        this.x--;
-    }
-
-
-    public int getX() {
-        return x;
+    public Position goWest(){
+        return new Position(this.x--, this.y++);
     }
 
-    public void setX(int x) {
-        this.x = x;
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y);
     }
 
-    public int getY() {
-        return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Position position = (Position) o;
+        return x == position.x && y == position.y;
     }
 }
