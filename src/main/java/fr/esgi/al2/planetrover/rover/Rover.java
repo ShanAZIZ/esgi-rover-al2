@@ -9,6 +9,7 @@ public class Rover {
     private final Name name;
     private Position position;
     private Orientation orientation;
+    private static final int MOVE_LEN = 1;
 
     public Rover(Name name, Position position, Orientation orientation) {
         this.name = name;
@@ -17,17 +18,25 @@ public class Rover {
     }
 
     public Rover() {
-        this.position = new Position(0,0);
+        this.position = new Position(0,0, 0);
         this.orientation = Orientation.North;
         this.name = new Name("My Rover");
     }
 
-    public void move (){
+    public void moveForward (){
         switch (this.orientation) {
-            case North -> this.position = this.position.goNorth();
-            case South -> this.position = this.position.goSouth();
-            case East -> this.position = this.position.goEast();
-            case West -> this.position = this.position.goWest();
+            case North -> this.position = this.position.goNorth(MOVE_LEN);
+            case South -> this.position = this.position.goSouth(MOVE_LEN);
+            case East -> this.position = this.position.goEast(MOVE_LEN);
+            case West -> this.position = this.position.goWest(MOVE_LEN);
+        }
+    }
+    public void moveBackWard (){
+        switch (this.orientation) {
+            case North -> this.position = this.position.goNorth(-MOVE_LEN);
+            case South -> this.position = this.position.goSouth(-MOVE_LEN);
+            case East -> this.position = this.position.goEast(-MOVE_LEN);
+            case West -> this.position = this.position.goWest(-MOVE_LEN);
         }
     }
 
